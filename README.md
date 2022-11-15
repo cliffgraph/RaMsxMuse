@@ -27,10 +27,10 @@ https://gigamix.hatenablog.com/entry/mgsdrv/
 <figure><img src="pics/RaSCC_R4A.jpg" width="300"/><figcaption>Fig.3 RaSCC-R4A</figcaption></figure>
 
 ### 基板製造発注
-私は、プリント基板製造サービスFusionPCB(https://www.fusionpcb.jp/)を利用しています。RaMsxMuseを発注する場合は“RaMsxMuse_R14A_gerber.zip”を、RaSCCを発注する場合は”RaSCC_R4A_gerber.zip”を使用します。最小ロット5枚で、4.9ドルです(2022/11現在)。
+私は、プリント基板製造サービス[FusionPCB](https://www.fusionpcb.jp/)を利用しています。RaMsxMuseを発注する場合は“RaMsxMuse_R14A_gerber.zip”を、RaSCCを発注する場合は”RaSCC_R4A_gerber.zip”を使用します。最小ロット5枚で、4.9ドルです(2022/11現在)。
 RaMsxMuseとRaSCCを同時に発注して送料込みで、25ドルくらいでした（DHLを使用すると到着が早くなりますがもう少し高くなります）。発注が初めての人はガーバーデータ登録時の基板情報は下記を参考にしてください（私もよく理解していない部分がありますがこれで発注しています）
 以前のRaMsxMuse(R10B)とRaSCC(R2B)のガーバーデータはビアの最小穴径が間違っていて下記の情報で発注できませんでした。RaMsxMuse(R10B)、RaSCC(R2B)では最小穴径を0.3mmに訂正しています。
-
+```
 材質：FR-4 TG 130
 層数：二層
 寸法：65*56
@@ -45,23 +45,24 @@ RaMsxMuseとRaSCCを同時に発注して送料込みで、25ドルくらいで�
 最小パターン幅／パターン間隔：6/6mil
 端面スルーホール：なし
 インピーダンス制御：なし
+```
 
 ### 組立
 部品表を参考に部品をそろえ実装してください。
 
 ### RaMsxMuse組立の注意点
-DCジャックの足を少し短くカットしてからはんだ付けしてください。そのままだとRaSCCの上に重ねたときにTangNanoのUSBコネクタ部に干渉します。RaSCCは使用しない場合は気にしなくてもよいです。
-RaSCCと組み合わせて使用する場合は、部品記号J2 の位置に実装する「6Pピンソケットメス3x2」（もしくは「3Pピンソケットメス3x1」を二個使用する）を基板背面に実装してください。これはRaSCCとの接続に使用されます。RaSCCは使わないよという場合は、実装しないでください。実装してしまうとこのピンソケットが邪魔でRaMsxMuseをRaspberryPiにアドオンできなくなります（実装してしまっても、40Pin GPIO Extenderケーブルを使用するという手もあります）
+- DCジャックの足を少し短くカットしてからはんだ付けしてください。そのままだとRaSCCの上に重ねたときにTangNanoのUSBコネクタ部に干渉します。RaSCCは使用しない場合は気にしなくてもよいです。
+- RaSCCと組み合わせて使用する場合は、部品記号J2 の位置に実装する「6Pピンソケットメス3x2」（もしくは「3Pピンソケットメス3x1」を二個使用する）を基板背面に実装してください。これはRaSCCとの接続に使用されます。RaSCCは使わないよという場合は、実装しないでください。実装してしまうとこのピンソケットが邪魔でRaMsxMuseをRaspberryPiにアドオンできなくなります（実装してしまっても、40Pin GPIO Extenderケーブルを使用するという手もあります）
 
 ### RaSCC組立の注意点
-TangNanoを実装する前に、J3の「連結ピンソケット 2x20(40P)」を先にはんだ付けすることをおすすめします。
+- TangNanoを実装する前に、J3の「連結ピンソケット 2x20(40P)」を先にはんだ付けすることをおすすめします。
 TangNanoはピンソケットを使用して実装すると、上に乗せるRaMsxMuseにぶつかってしまうので、TangNanoは直に基板へはんだ付けしてください。
-部品記号C4、C5の電解コンデンサも寝かせて実装してください。C4は問題ありませんが、C5を実装する前にR20～R23の抵抗器が寝かせるようにし、C5と干渉しないようにうまく実装してください(スミマセン)。
-頻繁に音量調節する場合は、VR1にGF063XB103を使用してください。その際、部品記号U2はピンソケットを使用せずに直接はんだ付けしてください。そして、GF063XB103のリード線を極力伸ばした状態で（かつ、RaMsxMuseにぶつからない程度の長さで）はんだ付けして下さい。
-部品記号J1のピンヘッダは最後に時はんだ付けすることをおすすめします。RaMsxMuseのピンソケットメス側にピンヘッダを刺した状態でRaSCCにRaMsxMuseを載せてみてください。この状態でピンヘッダをRaSCCにはんだ付けしてください。ピンヘッダをなんのガイドもなしにはんだ付けすると意外に角度が付いてしまって、RaMsxMuseのピンソケットに入らないことがあります。
-TangNanoへの書き込みは、GOWIN FPGA Designer 付属の、GOWIN Programmer を使用します。設定は下記の通り。
+- 部品記号C5の電解コンデンサも寝かせて実装してください。C5を実装する前にR13～R17の抵抗器とC5とが干渉しないようにうまく実装してください。
+- RaSCC裏面のジャンパはオープンのままでOKです。
+- 部品記号J1のピンヘッダは最後に時はんだ付けすることをおすすめします。RaMsxMuseのピンソケットメス側にピンヘッダを刺した状態でRaSCCにRaMsxMuseを載せてみてください。この状態でピンヘッダをRaSCCにはんだ付けしてください。ピンヘッダをなんのガイドもなしにはんだ付けすると意外に角度が付いてしまって、RaMsxMuseのピンソケットに入らないことがあります。
+- TangNanoへの書き込みは、GOWIN FPGA Designer 付属の、GOWIN Programmer を使用します。設定は下記の通り。
 Series：GW1N、Device：GW1N-1、Operation：embFlash Erase,Program,Verify、FS File：(wave_table_sound.fsファイルを選択します)。ケーブルセッティングのFrequencyは、15MHzを選んでください。
-※wave_table_sound.fsファイルは、wave_table_sound_for_RaSCC_R2B.zipに圧縮されています。
+- ※wave_table_sound.fsファイルは、wave_table_sound_for_RaSCC_R4A.zipに圧縮されています。
 ※私のPC環境だけでしょうか、TangNanoへの書き込みは一回ではうまくいかないことがあります（ベリファイに失敗する）。その場合は、ケーブルセッティングのFrequencyを別の値に変更したり、OperationをembFlash Erase Only にして、何度も消去を繰り返したり、でようやく書き込めます。書き込み時のOperationは「embFlash Erase,Program,Verify」にして、必ずベリファイが実行されるようにしましょう。
 
 ### RaspberryPiの準備
