@@ -69,7 +69,7 @@ Series：GW1N、Device：GW1N-1、Operation：embFlash Erase,Program,Verify、FS
 
 #### RaSCC RTL 変更履歴
 |date|file name|memo|
-|:-|:-|:-|:-|
+|:-|:-|:-|
 |2022/1/25|wave_table_sound_for_RaSCC_R2B.zip|RaSCC-R2B専用|
 |2022/11/15|wave_table_sound_for_RaSCC_R4A.zip|RaSCC-R4A専用|
 |2022/11/20|rascc_R4A_20221120.zip|RaSCC-R4A専用、SCC+として鳴らすことができなかったミスを修正しファイル名を変更した|
