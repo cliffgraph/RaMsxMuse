@@ -1,6 +1,6 @@
 
 # RaMsxMuse
-updated: 2022/11/15
+updated: 2022/11/20
 
 <figure><img src="pics/RasPiZero2.jpg" width="300" /><figcaption>Fig.1 RaMsxMuse + RaSCC + RasPiZero2</figcaption></figure>
 
@@ -61,9 +61,18 @@ TangNanoはピンソケットを使用して実装すると、上に乗せるRaM
 - RaSCC裏面のジャンパはオープンのままでOKです。
 - 部品記号J1のピンヘッダは最後に時はんだ付けすることをおすすめします。RaMsxMuseのピンソケットメス側にピンヘッダを刺した状態でRaSCCにRaMsxMuseを載せてみてください。この状態でピンヘッダをRaSCCにはんだ付けしてください。ピンヘッダをなんのガイドもなしにはんだ付けすると意外に角度が付いてしまって、RaMsxMuseのピンソケットに入らないことがあります。
 - TangNanoへの書き込みは、GOWIN FPGA Designer 付属の、GOWIN Programmer を使用します。設定は下記の通り。
-Series：GW1N、Device：GW1N-1、Operation：embFlash Erase,Program,Verify、FS File：(wave_table_sound.fsファイルを選択します)。ケーブルセッティングのFrequencyは、15MHzを選んでください。
-- ※wave_table_sound.fsファイルは、wave_table_sound_for_RaSCC_R4A.zipに圧縮されています。
+Series：GW1N、Device：GW1N-1、Operation：embFlash Erase,Program,Verify、FS File：(~~wave_table_sound.fsファイル~~ rascc.fsファイルを選択します)。ケーブルセッティングのFrequencyは、15MHzを選んでください。
+
+- ~~※wave_table_sound.fsファイルは、wave_table_sound_for_RaSCC_R4A.zipに圧縮されています。~~
+- ※rascc.fsファイルは rascc_R4A_20221120.zipに圧縮されています。
 ※私のPC環境だけでしょうか、TangNanoへの書き込みは一回ではうまくいかないことがあります（ベリファイに失敗する）。その場合は、ケーブルセッティングのFrequencyを別の値に変更したり、OperationをembFlash Erase Only にして、何度も消去を繰り返したり、でようやく書き込めます。書き込み時のOperationは「embFlash Erase,Program,Verify」にして、必ずベリファイが実行されるようにしましょう。
+
+#### RaSCC RTL 変更履歴
+|date|file name|memo|
+|:-|:-|:-|:-|
+|2022/1/25|wave_table_sound_for_RaSCC_R2B.zip|RaSCC-R2B専用|
+|2022/11/15|wave_table_sound_for_RaSCC_R4A.zip|RaSCC-R4A専用|
+|2022/11/20|rascc_R4A_20221120.zip|RaSCC-R4A専用、SCC+として鳴らすことができなかったミスを修正しファイル名を変更した|
 
 ### RaspberryPiの準備
 - RaMsxMuse(R10B)+RaSCC(R2B)組み合わせでは、RaspberryPi 4 Mode B と、Raspberry Pi OS の64ビット版をおすすめしていましたが、RaMsxMuse(R14A)+RaSCC(R4A)では RaspberryPi Zero と 32ビットOSでもＯＫです。
